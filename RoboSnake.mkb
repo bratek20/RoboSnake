@@ -1,0 +1,38 @@
+#!/usr/bin/env mkb
+files #kod
+{
+    RoboSnake.cpp
+	Prostokat.h
+	Prostokat.cpp
+	Przycisk.h
+	Przycisk.cpp
+	Scena.h
+	Scena.cpp
+	ScenaMenu.h
+	ScenaMenu.cpp
+	ScenaGry.h
+	ScenaGry.cpp
+	Zasoby.h
+	Zasoby.cpp
+}
+
+files #pliki
+{
+	(data)
+	przyciskStart.png
+	przyciskWyjscie.png	
+}
+
+subprojects
+{
+    iwutil
+    iw2dscenegraphcore
+    iw2dscenegraph
+    iwgx
+    iwresmanager
+    iwtween
+}
+
+deployment
+{
+}
