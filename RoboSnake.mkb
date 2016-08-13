@@ -1,7 +1,9 @@
 #!/usr/bin/env mkb
 files #kod
 {
-    RoboSnake.cpp
+	[source]
+	(source)
+        RoboSnake.cpp
 	Prostokat.h
 	Prostokat.cpp
 	Przycisk.h
@@ -16,12 +18,12 @@ files #kod
 	Zasoby.cpp
 }
 
-files #pliki
+assets #pliki
 {
 	(data)
-	przyciskStart.png
-	przyciskWyjscie.png	
+	textures
 }
+
 
 subprojects
 {
@@ -31,6 +33,11 @@ subprojects
     iwgx
     iwresmanager
     iwtween
+}
+
+option
+{
+    cxx11
 }
 
 deployment
