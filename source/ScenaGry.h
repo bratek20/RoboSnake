@@ -5,10 +5,11 @@
 #include "Scena.h"
 #include "ScenaMenu.h"
 #include "Przycisk.h"
-
+#include "Glowa.h"
 class ScenaGry : public Scena {
 private:
 	Przycisk przyciskWyjscieZGry;
+	Glowa* glowa;
 public:
 	ScenaGry();
 	~ScenaGry();

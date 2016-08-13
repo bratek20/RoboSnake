@@ -3,21 +3,21 @@
 
 class Prostokat {
 protected:
-	int lewyGornyX, lewyGornyY, bokPoziomy, bokPionowy;
+	float lewyGornyX, lewyGornyY, bokPoziomy, bokPionowy;
 
 public:
 	Prostokat() {}
 	~Prostokat() {}
-	Prostokat(int _lewyGornyX, int _lewyGornyY, int _bokPoziomy, int _bokPionowy);
+	Prostokat(float _lewyGornyX, float _lewyGornyY, float _bokPoziomy, float _bokPionowy);
 	
-	bool zawiera(int x, int y); // czy pkt (x,y) zawiera sie w prostokacie
+	bool zawiera(float x, float y); // czy pkt (x,y) zawiera sie w prostokacie
 	bool zawiera(Prostokat &innyProstokat);// czy prostokat w calosci zawiera dany inny prostokat
 	bool koliduje(Prostokat &innyProstokat); // czy prostokat jakos koliduje z innym prostokatem
 
-	int getLewyGornyX();
-	int getLewyGornyY();
-	int getBokPoziomy();
-	int getBokPionowy();
+	float getLewyGornyX();
+	float getLewyGornyY();
+	float getBokPoziomy();
+	float getBokPionowy();
 };
 
 #endif 

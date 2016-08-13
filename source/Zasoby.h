@@ -6,7 +6,7 @@
 class Zasoby
 {
 public:
-	CIw2DImage* przyciskStart,*przyciskWyjscie;
+	CIw2DImage* przyciskStart,*przyciskWyjscie, *glowa;
 	static Zasoby& instancja() { 
 		static Zasoby *jedynaInstancja = new Zasoby(); //leniwa inicjalizacja
 		return *jedynaInstancja;

@@ -3,7 +3,7 @@ files #kod
 {
 	[source]
 	(source)
-        RoboSnake.cpp
+    RoboSnake.cpp
 	Prostokat.h
 	Prostokat.cpp
 	Przycisk.h
@@ -16,6 +16,10 @@ files #kod
 	ScenaGry.cpp
 	Zasoby.h
 	Zasoby.cpp
+	Cialo.h
+	Cialo.cpp
+	Glowa.h
+	Glowa.cpp
 }
 
 assets #pliki

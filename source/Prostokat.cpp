@@ -1,9 +1,9 @@
 #include "Prostokat.h"
 
-Prostokat::Prostokat(int _lewyGornyX, int _lewyGornyY, int _bokPoziomy, int _bokPionowy):
+Prostokat::Prostokat(float _lewyGornyX, float _lewyGornyY, float _bokPoziomy, float _bokPionowy):
 	lewyGornyX(_lewyGornyX), lewyGornyY(_lewyGornyY), bokPoziomy(_bokPoziomy), bokPionowy(_bokPionowy){}
 
-bool Prostokat::zawiera(int x, int y) { 
+bool Prostokat::zawiera(float x, float y) { 
 	if (lewyGornyX <= x && x <= lewyGornyX + bokPoziomy &&
 		lewyGornyY <= y && y <= lewyGornyY + bokPionowy)
 		return true;
@@ -29,7 +29,7 @@ bool Prostokat::koliduje(Prostokat &innyProstokat) { // czy zawieram sie w danym
 	return false;
 }
 
-int Prostokat::getLewyGornyX() { return lewyGornyX; }
-int Prostokat::getLewyGornyY() { return lewyGornyY; }
-int Prostokat::getBokPoziomy() { return bokPoziomy; }
-int Prostokat::getBokPionowy() { return bokPionowy; }
+float Prostokat::getLewyGornyX() { return lewyGornyX; }
+float Prostokat::getLewyGornyY() { return lewyGornyY; }
+float Prostokat::getBokPoziomy() { return bokPoziomy; }
+float Prostokat::getBokPionowy() { return bokPionowy; }
