@@ -6,7 +6,7 @@
 class Scena {
 public:
 	Scena();
-	virtual ~Scena() {}
+	virtual ~Scena(){} //nie usuwam nastepnaScena poniewaz bedize wykorzystwana po smierci tego obiektu
 	virtual void uaktualnij()=0;
 	virtual void rysuj()=0;
 	Scena* jakaNastepnaScena();

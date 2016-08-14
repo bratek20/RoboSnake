@@ -2,20 +2,19 @@
 
 ScenaGry::ScenaGry() {
 	przyciskWyjscieZGry = Przycisk(Zasoby::instancja().przyciskWyjscie, 300, 0);
-	glowa = new Glowa(Zasoby::instancja().glowa, 100, 100);
+	snake = std::shared_ptr<Glowa>(new Glowa(100, 100));
 }
 
 ScenaGry::~ScenaGry() {
-	delete glowa;
 	puts("usuwam scenaGry");
 }
 void ScenaGry::uaktualnij() {
 	if (przyciskWyjscieZGry.jestNacisniety())
 		nastepnaScena = new ScenaMenu;
-	glowa->uaktualnij();
+	snake->uaktualnij();
 }
 
 void ScenaGry::rysuj() {
-	glowa->rysuj();
+	snake->rysuj();
 	przyciskWyjscieZGry.rysuj();
 }

@@ -6,10 +6,11 @@
 #include "ScenaMenu.h"
 #include "Przycisk.h"
 #include "Glowa.h"
+
 class ScenaGry : public Scena {
 private:
 	Przycisk przyciskWyjscieZGry;
-	Glowa* glowa;
+	std::shared_ptr<Glowa> snake;//glowa Snake'a 
 public:
 	ScenaGry();
 	~ScenaGry();

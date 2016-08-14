@@ -17,6 +17,10 @@
 
 #define FRAME_TIME (30.0f / 1000.0f)
 
+//skopiowane z readme
+//Sterowanie: Naciskaj¹c ekran (lewy przycisk myszy) i trzymaj¹c sprawiamy, ¿e Snake bêdzie pod¹zaæ w tym kierunku
+//Gra ma domyslna rozdzielczosc 320x480.
+//Aby Snake porusza³ siê ze sta³a prêdkoœci¹ trzeba zadbaæ aby ekran by³ zeskalowany w³aœnie w takich proporcjach!
 int main()
 {
 	

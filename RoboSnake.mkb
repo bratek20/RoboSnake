@@ -3,23 +3,29 @@ files #kod
 {
 	[source]
 	(source)
-    RoboSnake.cpp
+	RoboSnake.cpp
+	
 	Prostokat.h
 	Prostokat.cpp
 	Przycisk.h
 	Przycisk.cpp
+	Zasoby.h
+	Zasoby.cpp
+	
 	Scena.h
 	Scena.cpp
 	ScenaMenu.h
 	ScenaMenu.cpp
 	ScenaGry.h
 	ScenaGry.cpp
-	Zasoby.h
-	Zasoby.cpp
+		
+	
 	Cialo.h
 	Cialo.cpp
 	Glowa.h
 	Glowa.cpp
+	Ogon.h
+	Ogon.cpp
 }
 
 assets #pliki
