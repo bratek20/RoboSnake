@@ -5,27 +5,36 @@ files #kod
 	(source)
 	RoboSnake.cpp
 	
-	Prostokat.h
-	Prostokat.cpp
-	Przycisk.h
-	Przycisk.cpp
-	Zasoby.h
-	Zasoby.cpp
+	Rectangle.h
+	Rectangle.cpp
+	Button.h
+	Button.cpp
+	Assets.h
+	Assets.cpp
+	MapLoader.h
+	MapLoader.cpp
 	
-	Scena.h
-	Scena.cpp
-	ScenaMenu.h
-	ScenaMenu.cpp
-	ScenaGry.h
-	ScenaGry.cpp
+	Reward.h
+	Reward.cpp
+	Obstacle.h
+	Obstacle.cpp
+
+	Scene.h
+	Scene.cpp
+	MenuScene.h
+	MenuScene.cpp
+	GameScene.h
+	GameScene.cpp
+	EndGameScene.h
+	EndGameScene.cpp
 		
 	
-	Cialo.h
-	Cialo.cpp
-	Glowa.h
-	Glowa.cpp
-	Ogon.h
-	Ogon.cpp
+	Body.h
+	Body.cpp
+	Head.h
+	Head.cpp
+	Tail.h
+	Tail.cpp
 }
 
 assets #pliki

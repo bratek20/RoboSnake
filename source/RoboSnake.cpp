@@ -11,8 +11,8 @@
  */
 #include "s3e.h"
 #include "Iw2D.h"
-#include "Scena.h"
-#include "ScenaMenu.h"
+#include "Scene.h"
+#include "MenuScene.h"
 #include "memory"
 
 #define FRAME_TIME (30.0f / 1000.0f)
@@ -26,21 +26,21 @@ int main()
 	
     Iw2DInit();
 
-	std::unique_ptr<Scena>aktualnaScena(new ScenaMenu);
+	std::unique_ptr<Scene>currentScene(new MenuScene);
 	
 	while (!s3eDeviceCheckQuitRequest())
     {
 		uint64 new_time = s3eTimerGetMs(); // wszystko co po angielsku skopiowowane z przykladowego projektu z jakiegos tutorialu
 
         s3ePointerUpdate();
-		aktualnaScena->uaktualnij();
+		currentScene->update();
 
-		if (aktualnaScena->jakaNastepnaScena())// istnieje nastepna scena, zmieniamy scene np menu -> gra
-			aktualnaScena = std::unique_ptr<Scena>(aktualnaScena->jakaNastepnaScena()); //smart pointer dba o usuniecie wczesniejszej sceny
+		if (currentScene->whatNextScene())// istnieje nastepna Scene, zmieniamy scene np menu -> gra
+			currentScene = std::unique_ptr<Scene>(currentScene->whatNextScene()); //smart pointer dba o usuniecie wczesniejszej sceny
 
 		Iw2DSurfaceClear(0);
 
-		aktualnaScena->rysuj();
+		currentScene->draw();
         
 		Iw2DSurfaceShow();
 		
@@ -51,8 +51,8 @@ int main()
     }
 
 	
-	delete &Zasoby::instancja();
-	aktualnaScena.reset();
+	delete &Assets::instance();
+	currentScene.reset();
 
 	Iw2DTerminate();
     
