@@ -26,6 +26,9 @@ public:
 	Head() {};
 	Head(float _lewyGornyX, float _lewyGornyY);
 	void update();
+    bool detectSelfCollision();//wykrywa kolizje snake'a ze swoim ogonem, 
+                               //zwraca true w przypadku krytycznego zdezenia tz. z strongTail
+                               //w przypadku weakTail przetnie go odcinajac to co jest za nim
 	void addTail(TailType tailType); // doklada nowy ogon na koniec
 };
 

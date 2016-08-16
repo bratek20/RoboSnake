@@ -6,6 +6,7 @@ GameScene::GameScene() {
     snake = std::shared_ptr<Head>(new Head(100, 100));
     
     MapLoader::loadMap(Level1, obstacles);
+    reward = std::unique_ptr<Reward>( new Reward(obstacles) );
 }
 
 void GameScene::update() {
@@ -15,17 +16,7 @@ void GameScene::update() {
     detectCollision();
 
 	snake->update();
-    reward.update();
-}
-
-void GameScene::draw() {
-    reward.draw();
-    snake->draw();
-
-	for (int i=0; i<obstacles.size();i++)
-		obstacles[i].draw();
-	
-	exitGameButton.draw();
+    reward->update();
 }
 
 void GameScene::detectCollision() {
@@ -33,6 +24,19 @@ void GameScene::detectCollision() {
         if (obstacles[i].collide(*snake))
             nextScene = new EndGameScene;
 
-    if (reward.isVisible() && reward.collide(*snake))
-        snake->addTail(reward.claimReward());
+    if (snake->detectSelfCollision())
+        nextScene = new EndGameScene;
+
+    if (reward->isVisible() && reward->collide(*snake))
+        reward->claimReward(snake);
+}
+
+void GameScene::draw() {
+    reward->draw();
+    snake->draw();
+
+	for (int i=0; i<obstacles.size();i++)
+		obstacles[i].draw();
+	
+	exitGameButton.draw();
 }

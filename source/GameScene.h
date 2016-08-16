@@ -16,7 +16,7 @@ private:
 	Button exitGameButton;
 	std::shared_ptr<Head> snake;//glowa Snake'a 
     std::vector< Obstacle >obstacles;
-    Reward reward;
+    std::unique_ptr<Reward> reward;
 
     void detectCollision(); //funkcja obslugujaca kolizje: snake'a ze scianami, snake'a z samym soba oraz snake'a z nagrodami
 public:

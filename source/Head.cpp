@@ -23,6 +23,24 @@ void Head::initialise() {
     addTail(initialTail); //poczatkowy snake ma glowe oraz dwa fragmenty
 }
 
+bool Head::detectSelfCollision() {
+    if (!initialised)return false;
+
+    std::weak_ptr<Tail>tailIterator = lastTail;
+    while (tailIterator.lock()->getTailType() != initialTail) {
+        if (collide(*tailIterator.lock())) {//wykryto kolizje z ogonem
+            if (tailIterator.lock()->getTailType() == strongTail)return true;//kolizja krytyczna - koniec gry
+            if (tailIterator.lock()->getTailType() == weakTail) {
+                tailIterator.lock()->cutTail(); 
+                lastTail = tailIterator.lock();
+                return false; //kolizja z miekkim ogonem - odcinamy ale zyjemy dalej
+            }
+        }
+        tailIterator = std::static_pointer_cast<Tail>( tailIterator.lock()->getFront().lock() );
+    }
+    return false;
+}
+
 void Head::addTail(TailType tailType) {
 	lastTail = std::static_pointer_cast<Tail>(lastTail->addTail(tailType));
 }

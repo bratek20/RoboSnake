@@ -6,7 +6,7 @@
 class Assets
 {
 public:
-	CIw2DImage* startButton,*exitButton, *head, *weakTail, *strongTail, *obstacle, *reward;
+	CIw2DImage *startButton,*retryButton, *exitButton, *head, *weakTail, *strongTail, *obstacle, *reward;
 	CIw2DFont* font;
 	static Assets& instance() { 
 		static Assets *theInstance = new Assets(); //leniwa inicjalizacja

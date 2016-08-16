@@ -20,3 +20,9 @@ std::shared_ptr<Body> Tail::addTail(TailType _tailType) {
 	back = std::shared_ptr<Body>(new Tail(_tailType, shared_from_this(), leftTopX, leftTopY));
 	return back;
 }
+void Tail::cutTail() {
+    back.reset();
+}
+TailType Tail::getTailType() {
+    return tailType;
+}

@@ -6,6 +6,8 @@ void MapLoader::loadMap(MapLevel level, std::vector<Obstacle>& obstacles) {
         loadFrame(obstacles);
         break;
     case Level2:
+        loadFrame(obstacles);
+        obstacles.push_back(Obstacle(Assets::instance().obstacle, 200, 200, 3, 3));//przykladowa kreacja map
         break;
     case Level3:
         break;

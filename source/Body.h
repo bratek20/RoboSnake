@@ -37,5 +37,6 @@ public:
 	virtual void update() = 0;
 	void draw();
 	std::pair<float, float> lastMove(); //zwraca ostatni zapamietany ruch, potrzebne aby ogon ladnie za soba podazal
+    std::weak_ptr<Body> getFront();//zwraca wskaznik na moj przod
 };
 #endif 

@@ -9,6 +9,7 @@
 
 class EndGameScene : public Scene {
 private:
+    Button retryButton;
 	Button exitButton;
 public:
 	EndGameScene();

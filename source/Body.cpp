@@ -33,6 +33,9 @@ void Body::setPosition(float newCenterX, float newCenterY) {
 	centerX = newCenterX; centerY = newCenterY;
 	leftTopX = centerX - radius; leftTopY = centerY - radius;
 }
+std::weak_ptr<Body> Body::getFront() {
+    return front;
+}
 
 void Body::setImage(CIw2DImage* _image) {
     image = _image;

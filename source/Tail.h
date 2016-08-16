@@ -17,6 +17,8 @@ public:
 	Tail(TailType _tailType, std::shared_ptr<Body> _front, float _leftTopX, float _leftTopY);
 	void update();
 	std::shared_ptr<Body> addTail(TailType _tailType);//doklada nowy Tail, zwraca jego wskaznik, potrzebne dla Glowa aby widziec koniec swojego Taila
+    TailType getTailType();
+    void cutTail(); //odcina ogon który za mna podaza
 };
 
 #endif

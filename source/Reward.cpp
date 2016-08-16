@@ -1,6 +1,7 @@
 #include "Reward.h"
 
-Reward::Reward(){
+Reward::Reward(std::vector<Obstacle>& _obstacles){
+    obstacles = _obstacles;
     image = Assets::instance().reward;
     horizontalSide = image->GetWidth();
     verticalSide = image->GetHeight();
@@ -10,14 +11,25 @@ Reward::Reward(){
 void Reward::reset() {
     visible = false;
     currentTime = 0;
-    leftTopX = 20 + rand() % 260;
-    leftTopY = 20 + rand() % 420;
     
-    int tailType = rand() % 7;
+    randomPosition();
+    
+    int tailType = rand() % strongTailPropability;
     if (tailType == 0) rewardType = strongTail;
     else rewardType = weakTail;
 }
-
+void Reward::randomPosition() {
+    bool obstaclesCollision = true;
+    while (obstaclesCollision) { //losujemy nowa pozycje dopoki nagroda koliduje z przeszkodami
+        leftTopX = rand() % 320;
+        leftTopY = rand() % 480;
+        
+        obstaclesCollision = false;
+        for (int i = 0; i < obstacles.size(); i++)
+            if (collide(obstacles[i]))
+                obstaclesCollision = true;
+    }
+}
 void Reward::update() {
     currentTime++;
     if (currentTime > spawnTime)
@@ -30,12 +42,11 @@ void Reward::draw() {
     
 }
 
-TailType Reward::claimReward() {
-    TailType currentReward = rewardType; 
+void Reward::claimReward(std::shared_ptr<Head> snake) {
+    for(int i=0;i<rewardAmount;i++)
+        snake->addTail(rewardType);
 
     reset();
-
-    return currentReward;
 }
 
 bool Reward::isVisible() {
