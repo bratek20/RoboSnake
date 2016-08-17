@@ -16,8 +16,9 @@ private:
 	CIw2DImage* image;
 
 	std::queue< std::pair<float, float> >movesMemory; // zachowuje ostatnie kilka ruchow, potrzebne do przemieszczania sie fragmentow snake'a  
-	//funkcje pomocnicze
-	void saveMove(float nowyX, float nowyY);//doklada nowa pozycje do pamieciRuchow
+	
+                                                      //funkcje pomocnicze
+    void saveMove(float nowyX, float nowyY);//doklada nowa pozycje do pamieciRuchow
 	void setPosition(float nowySrodekX, float nowySrodekY);//ustawia nowa pozycje, poprawiajac rowniez ulozenie prostokata
 	float distance(std::pair<float, float> Pkt1, std::pair<float, float> Pkt2);//oblicza odleglosc euklidesowa
 protected:
@@ -25,7 +26,8 @@ protected:
 	std::weak_ptr<Body>front;//wskaznik na czesc ciala przede mna, ktory mnie utworzyl i za nim podazam
 	std::shared_ptr<Body>back;//wskaznik na czesc ciala ktory utworzylem i ktory za mna podaza
 
-	float radius; // snake bedzie skladac sie z okregow
+    float dPos;//zmienna potrzebna do lepszego wykrywania kolizji
+    float radius; // snake bedzie skladac sie z okregow
 	float centerX, centerY; //srodek ciala (okregu)
 	const std::pair<float, float> noEnoughMemory = std::make_pair(-1, -1); // zwracane gdy kolejka nie pamieta conajmniej maxPamiecRuchow
 	void moveToPosition(float nowyX, float nowyY);//przemiszcza cialo na pozycje (nowyX, nowyY), zapamietujac ruch

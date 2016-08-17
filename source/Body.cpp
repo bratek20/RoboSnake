@@ -1,15 +1,21 @@
 #include "Body.h"
 
-Body::Body(CIw2DImage* _image, float _leftTopX, float _leftTopY):
-	Rectangle(_leftTopX, _leftTopY, _image->GetWidth(), _image->GetHeight()), image(_image) {
+Body::Body(CIw2DImage* _image, float _leftTopX, float _leftTopY): image(_image) {
 	radius = _image->GetHeight()/2;
 	centerX = _leftTopX + radius;
 	centerY = _leftTopY + radius;
+    
+    
+    verticalSide = sqrt(2)*radius;
+    horizontalSide = sqrt(2)*radius;
+    dPos = (2 * radius - verticalSide) / 2;
+    leftTopX = _leftTopX + dPos;
+    leftTopY = _leftTopY + dPos;
 }
 
 void Body::draw() {
 	if (back)back->draw(); //rekurencyjnie rysuje reszte Snake'a
-	Iw2DDrawImage(image, CIwFVec2(leftTopX, leftTopY));
+	Iw2DDrawImage(image, CIwFVec2(leftTopX-dPos, leftTopY-dPos));
 }
 
 std::pair<float, float> Body::lastMove() {
@@ -25,13 +31,13 @@ void Body::moveToPosition(float newX, float newY) {
 
 void Body::saveMove(float newX, float newY) {
 	movesMemory.push(std::make_pair(newX, newY));
-	while (distance(movesMemory.front(), std::make_pair(centerX, centerY)) > radius) // dbamy aby aktualna pozycja od ostatniego zapamietanego bylo niewieksza niz radius
+	while (!movesMemory.empty() && distance(movesMemory.front(), std::make_pair(centerX, centerY)) > radius) // dbamy aby aktualna pozycja od ostatniego zapamietanego bylo niewieksza niz radius
 		movesMemory.pop();																// zakldam ze nowa pozycja bedzie bedzie odlegla co najmniej o radius od ostatniego zapamietanego
 }
 
 void Body::setPosition(float newCenterX, float newCenterY) {
 	centerX = newCenterX; centerY = newCenterY;
-	leftTopX = centerX - radius; leftTopY = centerY - radius;
+	leftTopX = centerX - radius + dPos; leftTopY = centerY - radius +dPos;
 }
 std::weak_ptr<Body> Body::getFront() {
     return front;
